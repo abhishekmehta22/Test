@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}LOGIN{% endblock title %}
+
+{%block body%}
+
+<div class="form loginBox"> 
+    <form html="{:multipart=>true}" action="/login" accept-charset="UTF-8" data-remote="true" method="post">
+        <input name="utf8" type="hidden" value="✓"> 
+        <input name="email" class="form-control" placeholder="Email"> 
+        <input type="password" name="password" class="form-control" placeholder="Password">
+        <input type="hidden" name="destination" value="dashboard">
+        <input type="hidden" name="url" value="https%3A%2F%2Fwww.creative-tim.com%2Flogin">
+        <input type="submit" name="commit" value="Login" class="btn btn-default btn-login" data-disable-with="Login">
+    </form> 
+</div>
+
+
+<div class="box"> 
+    <div class="content registerBox" style="display:none;"> 
+        <div class="form"> 
+            <form html="{:multipart=>true}" action="/register" accept-charset="UTF-8" data-remote="true" method="post">
+                <input name="utf8" type="hidden" value="✓">
+                <input name="email" class="form-control" placeholder="Email"> 
+                <input type="password" name="password" class="form-control" placeholder="Password"> 
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Repeat Password"> 
+                <input type="hidden" name="destination" value="dashboard"> <input type="hidden" name="url" value="https%3A%2F%2Fwww.creative-tim.com%2Flogin"> 
+                <input type="submit" name="commit" value="Create account" class="btn btn-default btn-register" data-disable-with="Create account"> 
+                <label class="checkbox"> 
+                    <span class="icons">
+                        <span class="first-icon fa fa-square-o">
+                        </span>
+                        <span class="second-icon fa fa-check-square-o">
+                        </span>
+                    </span>
+                    <input type="checkbox" value="1" data-toggle="checkbox" name="subscribed" class="ct-info checkbox-subscribe"> Subscribe me to the Newsletter
+                </label> 
+            </form> 
+        </div> 
+    </div> 
+</div>
+{%endblock body%}
