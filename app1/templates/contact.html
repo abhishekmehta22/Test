@@ -25,19 +25,23 @@
         </div>
         <div class="social-media">
           <p>Connect with us :</p>
-          <div class="social-icons"> <a href="#"> <i class="bi bi-facebook"></i> </a> <a href="#"> <i
-                class="bi bi-twitter"></i> </a> <a href="#"> <i class="bi bi-instagram"></i> </a> <a href="#"> <i
+          <div class="social-icons"> <a href="https://www.facebook.com/"> <i class="bi bi-facebook"></i> </a> <a href="https://twitter.com/"> <i
+                class="bi bi-twitter"></i> </a> <a href="https://www.instagram.com/"> <i class="bi bi-instagram"></i> </a> <a href="https://www.linkedin.com/"> <i
                 class="bi bi-linkedin"></i> </a> </div>
         </div>
       </div>
+
+
+      
       <div class="contact-info-form"> <span class="circle one"></span> <span class="circle two"></span>
-        <form action="#" onclick="return false;" autocomplete="off">
+        <form action="" method="POST"  autocomplete="off">
+          {% csrf_token %}
           <h3 class="title">Contact us</h3>
           <div class="social-input-containers"> <input type="text" name="name" class="input" placeholder="Name" />
           </div>
           <div class="social-input-containers"> <input type="email" name="email" class="input" placeholder="Email" />
           </div>
-          <div class="social-input-containers"> <input type="tel" name="phone" class="input" placeholder="Phone" />
+          <div class="social-input-containers"> <input type="tel" name="mobile" class="input" placeholder="Phone" />
           </div>
           <div class="social-input-containers textarea"> <textarea name="message" class="input"
               placeholder="Message"></textarea> </div> <input type="submit" value="Send" class="btns" />

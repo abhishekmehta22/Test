@@ -24,8 +24,8 @@
   <link href="https://use.fontawesome.com/release/v5.8.1/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="/path/to/cdn/bootstrap.min.css" />
-  <link rel="stylesheet" href="/path/to/bootstrap-side-modals.css" />
+  <!-- <link rel="stylesheet" href="/path/to/cdn/bootstrap.min.css" />
+  <link rel="stylesheet" href="/path/to/bootstrap-side-modals.css" /> -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   
@@ -35,7 +35,7 @@
 <body>
   <nav class="navbar navbar-expand-lg sticky fixed-top r-nav">
     <div class="container-fluid">
-      <a href="#" class="navbar-brand">ADOPTPET</a>
+      <a href="{%url 'home' %}" class="navbar-brand">ADOPTPET</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarId"
         style="background-color: rgb(190, 255, 11)">
         <span><i class="bi bi-list hamburger"></i></span></button>
@@ -56,7 +56,7 @@
         </ul>
         <div class="mx-2">
           <button class="button" type="button" data-toggle="modal" data-target="#signup">
-            <href a="signup"></href>Sign Up
+            <href a=signup></href>Sign Up 
           </button>
 
           <button class="button" type="button" data-toggle="modal" data-target="#login">Login</button>
@@ -67,15 +67,16 @@
   </nav>
 
 
-    <!-- left modal -->
+  <!-- left modal -->
   <div class="modal modal_outer left_modal fade" id="signup" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel2">
     <div class="modal-dialog" role="document">
-      <form method="post" id="get_quote_frm">
-        <div class="modal-content-l">
+      <form action="{% url 'signup' %}" method="post" id="get_quote_frm">
+        {% csrf_token %}
+        <div class="modal-content " style="background-color: rgb(95, 95, 95); color: whitesmoke;">
           <!-- <input type="hidden" name="email_e" value="admin@filmscafe.in"> -->
           <div class="modal-header">
-            <h2 class="modal-title">WELCOME TO ADOPTPET</h2>
+            <h2 class="modal-title">Welcome to AdoptPet</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -85,26 +86,32 @@
             <div class="form-row">
 
               <div class="form-group col-sm-6">
-                <label for="name">Name <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" required="" id="name" name="name">
+                <label for="first_name">First Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" required="" id="first_name" name="first_name">
               </div>
               <div class="form-group col-sm-6">
+                <label for="last_name">Last Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" required="" id="last_name" name="last_name">
+              </div>
+              <div class="form-group  col-sm-12">
+                <label for="username">Username <span class="text-danger">*</span></label>
+                <input type="text" required="" class="form-control" id="username" name="username">
+              </div>
+              <div class="form-group col-sm-12">
                 <label for="email">Email <span class="text-danger">*</span></label>
                 <input type="email" required="" class="form-control" id="email" name="email">
               </div>
+              
               <div class="form-group  col-sm-12">
-                <label for="contact">Mobile Number <span class="text-danger">*</span></label>
-                <input type="email" required="" class="form-control" id="contact" name="contact">
+                <label for="password1">Password <span class="text-danger">*</span></label>
+                <input type="password" required="" class="form-control" id="password1" name="password1">
+              </div>
+              <div class="form-group  col-sm-12">
+                <label for="password2">Confirm Password <span class="text-danger">*</span></label>
+                <input type="password" required="" class="form-control" id="password2" name="password2">
               </div>
 
-              <div class="form-group  col-sm-12">
-                <label for="password">Password<span class="text-danger">*</span></label>
-                <input type="password" required="" class="form-control" id="contact" name="password">
-              </div>
-              <div class="form-group  col-sm-12">
-                <label for="password">Confirm Password<span class="text-danger">*</span></label>
-                <input type="password" required="" class="form-control" id="contact" name="password">
-              </div>
+
             </div>
 
           </div>
@@ -138,19 +145,19 @@ aria-hidden="true">
     <div class="modal-body mx-4">
       <!--Body-->
       <div class="md-form mb-5">
-        <input type="email" id="Form-email1" class="form-control validate">
+        <input type="email" id="Form-email1" class="form-control validate" name='email'>
         <label data-error="wrong" data-success="right" for="Form-email1">Your email</label>
       </div>
 
       <div class="md-form pb-3">
-        <input type="password" id="Form-pass1" class="form-control validate">
+        <input type="password" id="Form-pass1" class="form-control validate" name='password'>
         <label data-error="wrong" data-success="right" for="Form-pass1">Your password</label>
         <p class="pass font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
             Password?</a></p>
       </div>
 
       <div class="text-center mb-3">
-        <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+        <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
       </div>
       <p class="pass font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
         with:</p>
@@ -280,7 +287,7 @@ aria-hidden="true">
           <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
 
           <!-- Facebook -->
-          <a type="button" class="btn-floating btn-fb">
+          <a href="https://www.facebook.com/" type="button" class="btn-floating btn-fb">
             <i class="bi bi-facebook"></i>
           </a>
           <!-- Twitter -->
@@ -330,14 +337,14 @@ aria-hidden="true">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="js/app1.js"></script>
-  <script src="lib/typed.js"></script>
+  <!-- <script src="js/app1.js"></script>
+  <script src="lib/typed.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.0/typed.min.js"
     integrity="sha512-zKaK6G2LZC5YZTX0vKmD7xOwd1zrEEMal4zlTf5Ved/A1RrnW+qt8pWDfo7oz+xeChECS/P9dv6EDwwPwelFfQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.0/typed.min.js.map"></script>
-  <script src="/path/to/cdn/jquery.slim.min.js"></script>
-  <script src="/path/to/cdn/bootstrap.min.js"></script>
+  <!-- <script src="/path/to/cdn/jquery.slim.min.js"></script>
+  <script src="/path/to/cdn/bootstrap.min.js"></script> -->
   <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>

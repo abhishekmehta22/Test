@@ -53,3 +53,11 @@ function erase(){
 document.addEventListener("DOMContentLoaded" , function(){
     setTimeout(type, newTestDela = 250 );
 })
+
+$(document).ready(function(){
+    $('#modal_view_left').modal({
+        show: 'false'
+    });
+});
+jQuery.noConflict();
+$('#modal').modal('show');
