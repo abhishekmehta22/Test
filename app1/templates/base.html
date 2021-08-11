@@ -71,7 +71,7 @@
   <div class="modal modal_outer left_modal fade" id="signup" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel2">
     <div class="modal-dialog" role="document">
-      <form action="{% url 'signup' %}" method="post" id="get_quote_frm">
+      <form  method="POST" id="get_quote_frm">
         {% csrf_token %}
         <div class="modal-content " style="background-color: rgb(95, 95, 95); color: whitesmoke;">
           <!-- <input type="hidden" name="email_e" value="admin@filmscafe.in"> -->
@@ -118,7 +118,7 @@
           <div class="modal-footer">
             <button type="reset" class="btn btn-light mr-auto" data-dismiss="modal"><i
                 class="fas fa-window-close mr-2"></i> Cancel</button>
-            <button type="submit" class="btn btn-primary" id="submit_btn">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submit_btn" form='get_quote_frm'>Submit</button>
           </div>
 
         </div><!-- //modal-content -->

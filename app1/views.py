@@ -20,15 +20,17 @@ def blog(request):
 
 def sign_up(request):
     if request.method == "POST":
-        first_nm = request.POST['first_name']
-        last_nm = request.POST['last_name']
-        usernm = request.POST['username']
-        email = request.POST['email']
-        pwd = request.POST['password1']
-        cpwd = request.POST['password2']
+        first_nm = request.POST.get('first_name')
+        last_nm = request.POST.get('last_name')
+        usernm = request.POST.get('username')
+        email = request.POST.get('email')
+        pwd = request.POST.get('password1')
+        cpwd = request.POST.get('password2')
+        print('Done')
 
-        ins = Sign_up(first_name=first_nm, last_name=last_nm, username=usernm, email=email, password=pwd)
-        ins.save
+        ins = Sign_up.objects.create(first_name=first_nm, last_name=last_nm, username=usernm, email=email, password=pwd)
+        ins.save()
+        
         print("created user")
         return redirect('about.html')
     else:
